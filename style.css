@@ -1,3 +1,8 @@
+html {
+  font-size: 10px;
+  /* valor predeterminado */
+}
+
 body {
   background-color: #55595c;
   margin: 0; /* resets the default 8px from most browsers */
@@ -6,9 +11,15 @@ body {
 
 #main-header {
   background-color: white;
-  color: #a70184;
+  /* color: #a70184; */
   padding: 5px 0; /* top&down left&right */
-  margin: 20px 5% 20px 5%; /* top right down left */
+
+  /* margin-left: 20px;
+  margin-right: 20px; */
+  margin-left: 10%; /* % del tamaño del padre */
+  margin-right: 10%; /* % del tamaño del padre */
+
+  margin-bottom: 30px;
 }
 
 .games-container img  {
@@ -24,3 +35,227 @@ body {
   margin-right: 40px; /* same as native left separation for bullet point */
 }
 
+#main-header span {
+  color: #a70184;
+}
+
+/* PSEUDOCLASES */
+
+#brands li:hover {
+  background-color: #a70184;
+  font-weight: bold;
+}
+
+#access-buttons button:active {
+  background-color: #a70184;
+}
+
+/* PSEUDOELEMENTOS */
+
+#brands li::marker {
+  color: orange;
+  content: "👾 ";
+}
+
+#brands li::first-letter {
+  color: orange;
+  /* font-size: 25px; */
+  /* em. un % de lo que seria su tamaño de fuente predeterminado o original */
+  font-size: 1.2em; /* 120% del tamaño original de la fuente */
+}
+
+#brands li:hover::after {
+  /* cuando haga hover, agrega algo despues del texto */
+  content: "  EN OFERTA";
+}
+
+
+
+#access-buttons button {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+#access-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+
+/* FLEXBOX */
+
+.content {
+  background-color: lightgray;
+  
+  /* padding-top: 20px;
+  padding-bottom: 20px; */
+  padding: 20px 0; /* arriba/abajo izq/der*/
+
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
+  margin: 20px 0; /* arriba/abajo izq/der*/
+  /* margin: 50px 0 20px 10px  */ /* ejemplo 4 ejes diferentes: arriba, derecha, abajo, izquierda */
+
+}
+
+.content .card {
+  background-color: darkgray;
+  border-radius: 10px;
+
+  width: 200px;
+  height: 350px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  /* si el contenedor es en columnas, justify content alinea verticalmente y align items horizontalmente */
+
+  justify-content: space-around;
+
+  /* ejemplo base de animaciones */
+  /* transition determina como el cambio de un estado a otro de este elemento */
+  transition: 0.5s ease;
+
+}
+
+.games-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  /* gap => la separacion general de todos los elementos del cont.*/
+  gap: 10px;
+}
+
+.content .card:hover {
+  flex-grow: 1;
+  background-color: #a70184;
+}
+
+/* #games-section {
+  position: relative; 
+} */
+/* esto es para poder posicionar elementos absolutos internos */
+
+/* #titulo {
+  position: absolute;
+
+  top: 50px;
+  left: 50px
+
+
+} */
+/* relativo es dependiente de su position original */
+/* fixed es dependiente de la vista */
+/* absolute es dependiente de el primer padre posicionado que consiga */
+
+/* #card1:hover {
+  position: relative;
+  top: 30px;
+  left: 30px;
+} */
+
+#access-buttons {
+  position: sticky; /* empieza en su lugar normal y solo queda anclado de acuerdo a las propiedades top, left, right, bottom cuando saldria de la vista */
+  /* en caso de sticky no hace falta width */
+  /* width: 420px; */
+  top: 0;
+
+  background-color: white;
+  height: 70px;
+  padding-bottom: 10px;
+}
+
+
+/* #access-buttons button span {
+  position: relative;
+  top: 45px;
+}
+
+#access-buttons button i {
+  position: relative;
+  bottom: 7px;
+} */
+
+#access-buttons button {
+  position: relative;
+}
+
+#access-buttons button span {
+  position: absolute;
+  top: 47px;
+  right: 0;
+  left: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* permite que los saltos de pagina automatico sean más smooth */
+}
+
+
+/* de aqui atras, TODOS los estilos son enfocados en mobil */
+
+
+/* ejemplo de tablets en adelante */
+@media (min-width: 768px) {
+
+  /* .todos los estilos que coloque acá solo aplicaran para tabletas o más grandes */
+
+  body {
+    background-color: darkblue;
+  }
+
+  .games-container {
+    gap: 35px;
+  }
+
+  #access-buttons {
+    justify-content: center;
+    gap: 40px;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+}
+
+/* ejemplo de pantallas grandes en adelante */
+@media (min-width: 1100px) {
+
+  body {
+    background-color: red;
+  }
+
+  #responsive-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  html {
+    font-size: 20px;
+  }
+
+}
+
+/* rem. % del el tamaño de fuente del html */
+
+h1 {
+  font-size: 3rem; /* 3X16=48px*/
+}
+
+h2 {
+  font-size: 2rem /* 2x16=32px*/
+}
+
+h4 {
+  font-size: 1.2rem /* 1.2x16= 19px*/
+}
